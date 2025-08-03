@@ -38,7 +38,10 @@ set( PROJECT_SOURCES
 include_directories( ${PROJECT_INCLUDES}   # Needed to find include files '.h'.
 )
 
-#set(FullOutputDir "${CMAKE_SOURCE_DIR}/bin/${CMAKE_SYSTEM_NAME}${OSBitness}/${CMAKE_BUILD_TYPE}")
+# Set build type as Debug.
+set(CMAKE_BUILD_TYPE "Debug"
+)
+
 set(FullOutputDir "${CMAKE_SYSTEM_NAME}${OSBitness}/${CMAKE_BUILD_TYPE}")
 
 # ARCHIVE_OUTPUT_DIRECTORY = Where static libraries (.lib/.a) go.
@@ -53,11 +56,6 @@ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${FullOutputDir}")
 #	Example: bin/Windows64/Debug/
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${FullOutputDir}")
 
-
-# Add executable target.
-#add_executable(${PROJECT_NAME} src/main.cpp)
-
-# OR
 
 # Add the executable.
 # It just required executable name (Which is Project name in here) and Source includes.

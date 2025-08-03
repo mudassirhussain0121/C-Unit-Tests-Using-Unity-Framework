@@ -43,13 +43,13 @@ Unity is a lightweight unit testing framework for C (and C++). It's designed for
 - A test file will include a `setUp()` and `tearDown()` function, which are run before and after the tests, respectively. These functions are mandatory and allow us to set up any necessary test case conditions. For this example, we can leave them empty, but they should be present in the test file.
 - It’s a good practice to start test case function names with `test_`.
 	- Test function take no arguments and return nothing.
-	- E.g. `test_add()`
+	- E.g. `void test_add()`
 - Finally, the test file must include a `main()` function at the end to run the Unity test harness.
 	- This function will call `UNITY_BEGIN()`, then `RUN_TEST` for each test, and finally `UNITY_END()`.
 	- The `RUN_TEST()` macro is responsible for invoking each test function. Every individual test case must be explicitly registered with its own RUN_TEST() call to ensure proper execution.
 - Basic skeleton of `Test*.c file`.
 
-```sh
+```
 #include "unity.h"
 #include "file_to_test.h"
 
@@ -82,7 +82,7 @@ int main(void) {
 		- Number of failures
 		- Tests ignored (not run)
 
-```sh
+```
 file_to_test.c:10:test_func_name:PASS
 ----------------------
 1 Tests 0 Failures 0 Ignored
@@ -94,7 +94,7 @@ OK
 	- git clone https://github.com/ThrowTheSwitch/Unity.git
 - Recommended project structure.
 
-```sh
+```
 my_project/
 ├── CMakeLists.txt               # Main CMake build configuration
 ├── build_script.sh              # Build script to build the project
@@ -115,12 +115,12 @@ my_project/
 - It's custom created build script for the project and can be modified accordingly.
 	- `build_script.sh`
 
-```sh
+```
 mkdir build
 cd build
 cmake .. -G Ninja
 cmake --build .
-cd Windows64        # As our .exe is being created in `build/Windows64`
+cd Windows32/Debug   # As our .exe is being created in "build/Windows64/Debug"
 ./UNIT_TESTS.exe
 # Prevent terminal from closing
 read -p "Press Enter to exit..."
